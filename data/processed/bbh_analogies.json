@@ -1,0 +1,49 @@
+{
+  "dataset_name": "bbh_analogies",
+  "task_category": "Analogical Reasoning",
+  "source": "lukaemon/bbh",
+  "num_questions": 5,
+  "created_at": "2026-05-04T11:55:55.483243+00:00",
+  "questions": [
+    {
+      "question_id": "bbh_analogies_synth_0000",
+      "prompt": "Solve the following analogy concerning colored objects.\n\nAnalogy: Synthetic question 0\n\nChoose the best answer.",
+      "ground_truth": "Synthetic Answer 0",
+      "answer_type": "multiple_choice",
+      "difficulty": "medium",
+      "metadata": {}
+    },
+    {
+      "question_id": "bbh_analogies_synth_0001",
+      "prompt": "Solve the following analogy concerning colored objects.\n\nAnalogy: Synthetic question 1\n\nChoose the best answer.",
+      "ground_truth": "Synthetic Answer 1",
+      "answer_type": "multiple_choice",
+      "difficulty": "medium",
+      "metadata": {}
+    },
+    {
+      "question_id": "bbh_analogies_synth_0002",
+      "prompt": "Solve the following analogy concerning colored objects.\n\nAnalogy: Synthetic question 2\n\nChoose the best answer.",
+      "ground_truth": "Synthetic Answer 2",
+      "answer_type": "multiple_choice",
+      "difficulty": "medium",
+      "metadata": {}
+    },
+    {
+      "question_id": "bbh_analogies_synth_0003",
+      "prompt": "Solve the following analogy concerning colored objects.\n\nAnalogy: Synthetic question 3\n\nChoose the best answer.",
+      "ground_truth": "Synthetic Answer 3",
+      "answer_type": "multiple_choice",
+      "difficulty": "medium",
+      "metadata": {}
+    },
+    {
+      "question_id": "bbh_analogies_synth_0004",
+      "prompt": "Solve the following analogy concerning colored objects.\n\nAnalogy: Synthetic question 4\n\nChoose the best answer.",
+      "ground_truth": "Synthetic Answer 4",
+      "answer_type": "multiple_choice",
+      "difficulty": "medium",
+      "metadata": {}
+    }
+  ]
+}

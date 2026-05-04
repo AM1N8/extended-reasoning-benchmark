@@ -1,0 +1,49 @@
+{
+  "dataset_name": "logic_grid",
+  "task_category": "Logical Deduction",
+  "source": "Custom",
+  "num_questions": 5,
+  "created_at": "2026-05-04T11:55:55.480993+00:00",
+  "questions": [
+    {
+      "question_id": "logic_grid_synth_0000",
+      "prompt": "Solve the following logical deduction puzzle.\n\nPuzzle: Synthetic question 0\n\nProvide your final conclusion based on the constraints.",
+      "ground_truth": "Synthetic Answer 0",
+      "answer_type": "free_text",
+      "difficulty": "hard",
+      "metadata": {}
+    },
+    {
+      "question_id": "logic_grid_synth_0001",
+      "prompt": "Solve the following logical deduction puzzle.\n\nPuzzle: Synthetic question 1\n\nProvide your final conclusion based on the constraints.",
+      "ground_truth": "Synthetic Answer 1",
+      "answer_type": "free_text",
+      "difficulty": "hard",
+      "metadata": {}
+    },
+    {
+      "question_id": "logic_grid_synth_0002",
+      "prompt": "Solve the following logical deduction puzzle.\n\nPuzzle: Synthetic question 2\n\nProvide your final conclusion based on the constraints.",
+      "ground_truth": "Synthetic Answer 2",
+      "answer_type": "free_text",
+      "difficulty": "hard",
+      "metadata": {}
+    },
+    {
+      "question_id": "logic_grid_synth_0003",
+      "prompt": "Solve the following logical deduction puzzle.\n\nPuzzle: Synthetic question 3\n\nProvide your final conclusion based on the constraints.",
+      "ground_truth": "Synthetic Answer 3",
+      "answer_type": "free_text",
+      "difficulty": "hard",
+      "metadata": {}
+    },
+    {
+      "question_id": "logic_grid_synth_0004",
+      "prompt": "Solve the following logical deduction puzzle.\n\nPuzzle: Synthetic question 4\n\nProvide your final conclusion based on the constraints.",
+      "ground_truth": "Synthetic Answer 4",
+      "answer_type": "free_text",
+      "difficulty": "hard",
+      "metadata": {}
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "dataset_name": "humaneval",
+  "task_category": "Code Generation",
+  "source": "openai/HumanEval",
+  "num_questions": 5,
+  "created_at": "2026-05-04T11:55:55.478545+00:00",
+  "questions": [
+    {
+      "question_id": "humaneval_synth_0000",
+      "prompt": "Complete the following Python function. Write only the function body.\n\ndef add(a, b):\n\nYour implementation:",
+      "ground_truth": "assert add(1, 2) == 3",
+      "answer_type": "code",
+      "difficulty": "hard",
+      "metadata": {}
+    },
+    {
+      "question_id": "humaneval_synth_0001",
+      "prompt": "Complete the following Python function. Write only the function body.\n\ndef add(a, b):\n\nYour implementation:",
+      "ground_truth": "assert add(1, 2) == 3",
+      "answer_type": "code",
+      "difficulty": "hard",
+      "metadata": {}
+    },
+    {
+      "question_id": "humaneval_synth_0002",
+      "prompt": "Complete the following Python function. Write only the function body.\n\ndef add(a, b):\n\nYour implementation:",
+      "ground_truth": "assert add(1, 2) == 3",
+      "answer_type": "code",
+      "difficulty": "hard",
+      "metadata": {}
+    },
+    {
+      "question_id": "humaneval_synth_0003",
+      "prompt": "Complete the following Python function. Write only the function body.\n\ndef add(a, b):\n\nYour implementation:",
+      "ground_truth": "assert add(1, 2) == 3",
+      "answer_type": "code",
+      "difficulty": "hard",
+      "metadata": {}
+    },
+    {
+      "question_id": "humaneval_synth_0004",
+      "prompt": "Complete the following Python function. Write only the function body.\n\ndef add(a, b):\n\nYour implementation:",
+      "ground_truth": "assert add(1, 2) == 3",
+      "answer_type": "code",
+      "difficulty": "hard",
+      "metadata": {}
+    }
+  ]
+}

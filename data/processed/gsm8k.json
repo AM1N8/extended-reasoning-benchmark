@@ -1,0 +1,49 @@
+{
+  "dataset_name": "gsm8k",
+  "task_category": "Arithmetic Word Problems",
+  "source": "openai/gsm8k",
+  "num_questions": 5,
+  "created_at": "2026-05-04T11:55:55.171031+00:00",
+  "questions": [
+    {
+      "question_id": "gsm8k_synth_0000",
+      "prompt": "Solve the following math word problem step by step.\n\nProblem: Janet has 0 apples...\n\nProvide your final numerical answer after your reasoning.",
+      "ground_truth": "0",
+      "answer_type": "numeric",
+      "difficulty": "medium",
+      "metadata": {}
+    },
+    {
+      "question_id": "gsm8k_synth_0001",
+      "prompt": "Solve the following math word problem step by step.\n\nProblem: Janet has 1 apples...\n\nProvide your final numerical answer after your reasoning.",
+      "ground_truth": "1",
+      "answer_type": "numeric",
+      "difficulty": "medium",
+      "metadata": {}
+    },
+    {
+      "question_id": "gsm8k_synth_0002",
+      "prompt": "Solve the following math word problem step by step.\n\nProblem: Janet has 2 apples...\n\nProvide your final numerical answer after your reasoning.",
+      "ground_truth": "2",
+      "answer_type": "numeric",
+      "difficulty": "medium",
+      "metadata": {}
+    },
+    {
+      "question_id": "gsm8k_synth_0003",
+      "prompt": "Solve the following math word problem step by step.\n\nProblem: Janet has 3 apples...\n\nProvide your final numerical answer after your reasoning.",
+      "ground_truth": "3",
+      "answer_type": "numeric",
+      "difficulty": "medium",
+      "metadata": {}
+    },
+    {
+      "question_id": "gsm8k_synth_0004",
+      "prompt": "Solve the following math word problem step by step.\n\nProblem: Janet has 4 apples...\n\nProvide your final numerical answer after your reasoning.",
+      "ground_truth": "4",
+      "answer_type": "numeric",
+      "difficulty": "medium",
+      "metadata": {}
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "dataset_name": "arc_challenge",
+  "task_category": "Scientific QA",
+  "source": "allenai/ai2_arc",
+  "num_questions": 5,
+  "created_at": "2026-05-04T11:55:55.482022+00:00",
+  "questions": [
+    {
+      "question_id": "arc_challenge_synth_0000",
+      "prompt": "Answer the following multiple choice science question.\n\nSynthetic question 0\n\nChoose the best answer from the options provided.",
+      "ground_truth": "Synthetic Answer 0",
+      "answer_type": "multiple_choice",
+      "difficulty": "hard",
+      "metadata": {}
+    },
+    {
+      "question_id": "arc_challenge_synth_0001",
+      "prompt": "Answer the following multiple choice science question.\n\nSynthetic question 1\n\nChoose the best answer from the options provided.",
+      "ground_truth": "Synthetic Answer 1",
+      "answer_type": "multiple_choice",
+      "difficulty": "hard",
+      "metadata": {}
+    },
+    {
+      "question_id": "arc_challenge_synth_0002",
+      "prompt": "Answer the following multiple choice science question.\n\nSynthetic question 2\n\nChoose the best answer from the options provided.",
+      "ground_truth": "Synthetic Answer 2",
+      "answer_type": "multiple_choice",
+      "difficulty": "hard",
+      "metadata": {}
+    },
+    {
+      "question_id": "arc_challenge_synth_0003",
+      "prompt": "Answer the following multiple choice science question.\n\nSynthetic question 3\n\nChoose the best answer from the options provided.",
+      "ground_truth": "Synthetic Answer 3",
+      "answer_type": "multiple_choice",
+      "difficulty": "hard",
+      "metadata": {}
+    },
+    {
+      "question_id": "arc_challenge_synth_0004",
+      "prompt": "Answer the following multiple choice science question.\n\nSynthetic question 4\n\nChoose the best answer from the options provided.",
+      "ground_truth": "Synthetic Answer 4",
+      "answer_type": "multiple_choice",
+      "difficulty": "hard",
+      "metadata": {}
+    }
+  ]
+}

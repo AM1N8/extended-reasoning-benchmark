@@ -1,0 +1,46 @@
+# ── Secrets ──────────────────────────────────
+.env
+.env.example
+# ── Database ─────────────────────────────────
+db/*.db
+db/*.db-journal
+
+# ── Data (raw downloads are large) ──────────
+data/raw/
+
+# ── Results (regenerable) ───────────────────
+results/figures/*.png
+results/tables/*.csv
+
+# ── Python ───────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+build/
+dist/
+wheels/
+*.egg-info/
+*.egg
+
+# ── Virtual environments ────────────────────
+.venv/
+venv/
+ENV/
+
+# ── Testing / tooling ──────────────────────
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ── OS / editor ─────────────────────────────
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.swo
+*~
+.idea/
+.vscode/

@@ -1,0 +1,49 @@
+{
+  "dataset_name": "mbpp",
+  "task_category": "Code Debugging",
+  "source": "google-research-datasets/mbpp",
+  "num_questions": 5,
+  "created_at": "2026-05-04T11:55:55.480583+00:00",
+  "questions": [
+    {
+      "question_id": "mbpp_synth_0000",
+      "prompt": "Write a Python function to solve the following problem.\n\nProblem: Synthetic question 0\n\nProvide only the runnable Python code.",
+      "ground_truth": "Synthetic Answer 0",
+      "answer_type": "code",
+      "difficulty": "medium",
+      "metadata": {}
+    },
+    {
+      "question_id": "mbpp_synth_0001",
+      "prompt": "Write a Python function to solve the following problem.\n\nProblem: Synthetic question 1\n\nProvide only the runnable Python code.",
+      "ground_truth": "Synthetic Answer 1",
+      "answer_type": "code",
+      "difficulty": "medium",
+      "metadata": {}
+    },
+    {
+      "question_id": "mbpp_synth_0002",
+      "prompt": "Write a Python function to solve the following problem.\n\nProblem: Synthetic question 2\n\nProvide only the runnable Python code.",
+      "ground_truth": "Synthetic Answer 2",
+      "answer_type": "code",
+      "difficulty": "medium",
+      "metadata": {}
+    },
+    {
+      "question_id": "mbpp_synth_0003",
+      "prompt": "Write a Python function to solve the following problem.\n\nProblem: Synthetic question 3\n\nProvide only the runnable Python code.",
+      "ground_truth": "Synthetic Answer 3",
+      "answer_type": "code",
+      "difficulty": "medium",
+      "metadata": {}
+    },
+    {
+      "question_id": "mbpp_synth_0004",
+      "prompt": "Write a Python function to solve the following problem.\n\nProblem: Synthetic question 4\n\nProvide only the runnable Python code.",
+      "ground_truth": "Synthetic Answer 4",
+      "answer_type": "code",
+      "difficulty": "medium",
+      "metadata": {}
+    }
+  ]
+}
