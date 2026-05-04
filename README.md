@@ -68,34 +68,107 @@ flowchart TD
 
 ## Quick Start
 
+### Prerequisites
+
+**Python 3.12+**
+
+Verify your version with `python --version`. If you need to upgrade, use [pyenv](https://github.com/pyenv/pyenv) or download directly from [python.org](https://python.org).
+
+**uv**
+
+`uv` is a fast Python package and project manager used to install dependencies. Install it with:
+
 ```bash
-# 1. Clone and install
+# macOS / Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Windows
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# Or via pip
+pip install uv
+```
+
+See the [uv documentation](https://docs.astral.sh/uv/) for further options.
+
+**just**
+
+`just` is a command runner used to manage pipeline steps. Install it with:
+
+```bash
+# macOS
+brew install just
+
+# Linux (pre-built binary)
+curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to ~/.local/bin
+
+# Linux (via cargo)
+cargo install just
+
+# Windows
+winget install Casey.Just
+```
+
+See the [just documentation](https://just.systems/man/en/) for further options.
+
+**API keys**
+
+You will need:
+- A [GitHub personal access token (PAT)](https://github.com/settings/tokens) with GitHub Models access enabled on your account.
+- A [Google AI Studio API key](https://aistudio.google.com/app/apikey).
+
+---
+
+### Setup
+
+```bash
+# 1. Clone the repository
 git clone https://github.com/USERNAME/llm-reasoning-benchmark
 cd llm-reasoning-benchmark
+
+# 2. Install dependencies
 uv sync
 
-# 2. Configure API keys
+# 3. Configure environment variables
 cp .env.example .env
-# Edit .env with your GitHub PAT and Google AI Studio key
+```
 
-# 3. Download datasets
+Open `.env` and populate your credentials:
+
+```env
+GITHUB_TOKEN=your_github_pat_here
+GOOGLE_AI_STUDIO_KEY=your_google_ai_studio_key_here
+```
+
+```bash
+# 4. Download datasets
 just download-datasets
 
-# 4. Dry run — validates pipeline (~5 minutes)
+# 5. Dry run — validates the full pipeline without incurring API costs (~5 minutes)
 just dry-run
+```
 
-# 5. Full benchmark — intended for overnight execution
+---
+
+### Running the Benchmark
+
+```bash
+# Full benchmark — intended for overnight execution (~18 hours on free-tier rate limits)
 just run
 
-# 6. Grade, analyze, and visualize
-just grade-quant
-just grade-qual
+# Grade responses
+just grade-quant   # Deterministic grading (math, code)
+just grade-qual    # Qualitative grading via judge model
+
+# Analyze results and produce visualizations
 just analyze
 just plot
 
-# 7. Generate report
+# Generate the enterprise deployment report
 just report
 ```
+
+> **Note:** The full run consumes approximately 50 million reasoning tokens and requires ~2 GB of disk space for the SQLite database. Ensure your API quotas and storage capacity are sufficient before starting.
 
 ---
 
