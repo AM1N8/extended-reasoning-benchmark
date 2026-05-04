@@ -51,22 +51,17 @@ Systematic benchmark of test-time compute (extended reasoning) across state-of-t
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    Benchmark Pipeline                   │
-│                                                         │
-│  Dataset Layer        API Layer          Analysis       │
-│  ┌───────────┐   →   ┌──────────────┐  →  ┌─────────┐  │
-│  │ 12 datasets│       │ GitHub Models│     │Metrics  │  │
-│  │ 50-100 q  │       │ Google Studio│     │Plots    │  │
-│  │ 5 formats │       │ Rate Limiter │     │Reports  │  │
-│  └───────────┘       └──────────────┘     └─────────┘  │
-│         ↓                   ↓                   ↓      │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │              SQLite Database                    │   │
-│  │  benchmark_runs (18,000–36,000 rows)            │   │
-│  └─────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Dataset Layer\n12 datasets · 50–100 q · 5 formats]
+    B[API Layer\nGitHub Models · Google AI Studio · Rate limiter]
+    C[Analysis\nMetrics · Plots · Reports]
+    D[(SQLite Database\nbenchmark_runs · 18k–36k rows)]
+
+    A --> B --> C
+    A --> D
+    B --> D
+    C --> D
 ```
 
 ---
