@@ -17,6 +17,7 @@ from rich.progress import (
 
 from benchmark.clients.__init__ import RateLimitedDispatcher
 from benchmark.clients.base import BudgetLevel, QueryRequest
+from benchmark.config import get_settings
 from benchmark.database import DatabaseManager
 
 logger = logging.getLogger(__name__)
@@ -171,12 +172,13 @@ async def _grade_with_llm(
     final_answer: str, ground_truth: str, dispatcher: RateLimitedDispatcher
 ) -> tuple[int | None, str]:
     """Call the LLM Judge (Gemini) to determine correctness."""
-    prompt = LLM_JUDGE_USER_TEMPLATE.format(ground_truth=ground_truth, final_answer=final_answer)
+    prompt = f"{LLM_JUDGE_SYSTEM_PROMPT}\n\n{LLM_JUDGE_USER_TEMPLATE.format(ground_truth=ground_truth, final_answer=final_answer)}"
     request = QueryRequest(
         prompt=prompt,
-        model="gemini-2.0-flash-thinking-exp-01-21",  # Default cheap model
+        model=get_settings().grader_model,  # Configurable grader model
         budget_level=BudgetLevel.BASELINE,
         temperature=0.0,
+        max_tokens=256,
     )
 
     for attempt in range(2):
@@ -196,8 +198,8 @@ async def _grade_with_llm(
             is_correct = 1 if data.get("correct") else 0
             rationale = data.get("rationale", "LLM Judge decision")
             return is_correct, rationale
-        except (json.JSONDecodeError, AttributeError):
-            logger.warning(f"Failed to parse LLM judge JSON (attempt {attempt + 1})")
+        except (json.JSONDecodeError, AttributeError) as e:
+            logger.warning(f"Failed to parse LLM judge JSON (attempt {attempt + 1}). Content: {content}")
             continue
 
     return None, "LLM judge parsing failed"

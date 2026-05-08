@@ -28,12 +28,14 @@ from benchmark.engine.budget import apply_budget
 logger = logging.getLogger(__name__)
 
 ALL_MODELS = [
+    #"groq/llama-3.3-70b-versatile",
+    #"groq/deepseek-r1-distill-qwen-32b",
     "openai/o1",
     "openai/o3-mini",
     "deepseek/DeepSeek-R1",
-    "gemini-2.0-flash-thinking-exp-01-21",
+    "gemini-2.5-flash",
     "openai/gpt-4o",  # Baseline 1
-    "anthropic/claude-3-5-sonnet",  # Baseline 2
+    # "anthropic/claude-3-5-sonnet",  # Baseline 2
 ]
 
 ALL_DATASETS = [
@@ -147,6 +149,8 @@ class BenchmarkRunner:
     ) -> bool:
         """Process a single job."""
         async with semaphore:
+            # Artificial throttle: With a semaphore of 3, waiting 12s ensures max ~15 requests per minute
+            await asyncio.sleep(12)
             start_time = time.monotonic()
 
             try:

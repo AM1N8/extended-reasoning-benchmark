@@ -14,7 +14,9 @@ PALETTE = {
     "openai/o1": "#0072B2",  # blue
     "openai/o3-mini": "#56B4E9",  # sky blue
     "deepseek/DeepSeek-R1": "#009E73",  # green
-    "gemini-2.0-flash-thinking-exp": "#E69F00",  # orange
+    "gemini-2.5-flash": "#E69F00",  # orange
+    "groq/deepseek-r1-distill-llama-70b": "#D55E00",  # red-orange
+    "groq/deepseek-r1-distill-qwen-32b": "#F0E442",  # yellow
     "openai/gpt-4o": "#CC79A7",  # pink (baseline)
     "anthropic/claude-3-5-sonnet": "#999999",  # gray (baseline)
 }

@@ -3,7 +3,7 @@
   "task_category": "Scientific QA",
   "source": "allenai/ai2_arc",
   "num_questions": 5,
-  "created_at": "2026-05-04T11:55:55.482022+00:00",
+  "created_at": "2026-05-05T11:22:16.029229+00:00",
   "questions": [
     {
       "question_id": "arc_challenge_synth_0000",

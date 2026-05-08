@@ -11,7 +11,7 @@ from benchmark.engine.budget import apply_budget
 logger = logging.getLogger(__name__)
 
 GOOGLE_STUDIO_SUPPORTED = [
-    "gemini-2.0-flash-thinking-exp-01-21",
+    "gemini-2.5-flash",
 ]
 
 

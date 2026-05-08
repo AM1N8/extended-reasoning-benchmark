@@ -13,6 +13,7 @@ from benchmark.analysis.metrics import (
     compute_significance_tests,
     export_all_metrics,
 )
+from benchmark.analysis.visualizations import generate_all_figures
 from benchmark.config import get_settings
 from benchmark.database import DatabaseManager
 
@@ -21,6 +22,9 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Benchmark Analysis & Metrics")
     parser.add_argument(
         "--output-dir", type=str, default="results", help="Output directory for CSVs"
+    )
+    parser.add_argument(
+        "--plot-only", action="store_true", help="Only generate visualizations"
     )
     return parser.parse_args()
 
@@ -31,8 +35,16 @@ def main():
     db = DatabaseManager(settings.db_path)
 
     out_dir = Path(args.output_dir)
-    print(f"Exporting metrics to {out_dir}...")
+    tables_dir = out_dir / "tables"
+    figures_dir = out_dir / "figures"
+    
+    print(f"Exporting metrics to {tables_dir}...")
     export_all_metrics(db, out_dir)
+
+    if args.plot_only:
+        print(f"Generating visualizations in {figures_dir}...")
+        generate_all_figures(tables_dir, figures_dir)
+        return
 
     # Generate numbers for summary report
     df_runs = db.get_runs()

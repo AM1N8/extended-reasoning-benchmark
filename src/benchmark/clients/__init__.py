@@ -10,6 +10,7 @@ import httpx
 from benchmark.clients.base import BaseLLMClient, BudgetLevel, ModelResponse, QueryRequest
 from benchmark.clients.github_models import GitHubModelsClient
 from benchmark.clients.google_studio import GoogleStudioClient
+from benchmark.clients.groq_client import GroqClient
 from benchmark.config import Settings
 
 logger = logging.getLogger(__name__)
@@ -24,16 +25,19 @@ class RateLimitedDispatcher:
         self._clients: list[BaseLLMClient] = [
             GitHubModelsClient(settings.github_pat, settings.github_models_endpoint),
             GoogleStudioClient(settings.google_ai_studio_key),
+            GroqClient(settings.groq_api_key),
         ]
         # Per-client rate limit state
         self._last_call: dict[str, float] = {}
         self._min_delay: dict[str, float] = {
-            "github": 2.0,  # 2 seconds between GitHub Models calls
-            "google": 1.5,  # 1.5 seconds between Google calls
+            "github": 8.0,  # 8 seconds between GitHub Models calls (~7.5 RPM)
+            "google": 2.0,  # 2 seconds between Google calls (~30 RPM)
+            "groq": 2.0,  # 2 seconds between Groq calls (~30 RPM)
         }
         self._locks: dict[str, asyncio.Lock] = {
             "github": asyncio.Lock(),
             "google": asyncio.Lock(),
+            "groq": asyncio.Lock(),
         }
 
     def _route(self, model: str) -> BaseLLMClient:
@@ -47,6 +51,8 @@ class RateLimitedDispatcher:
         """Map model to provider key for rate limits."""
         if "gemini" in model:
             return "google"
+        if "groq" in model:
+            return "groq"
         return "github"
 
     async def _wait_if_needed(self, provider_key: str) -> None:
@@ -67,7 +73,7 @@ class RateLimitedDispatcher:
     async def query(
         self,
         request: QueryRequest,
-        max_retries: int = 5,
+        max_retries: int = 10,
     ) -> ModelResponse | None:
         """Dispatch a query with rate limiting and retry logic.
 
@@ -92,8 +98,12 @@ class RateLimitedDispatcher:
             except httpx.HTTPStatusError as e:
                 status = e.response.status_code
                 if status == 429:
-                    # Exponential backoff with jitter
-                    wait = (2**attempt) + random.uniform(0, 1)
+                    retry_after = e.response.headers.get("Retry-After")
+                    if retry_after:
+                        wait = float(retry_after) + random.uniform(0.1, 1.0)
+                    else:
+                        # Stricter exponential backoff
+                        wait = (2 ** (attempt + 2)) + random.uniform(0, 2)
                     logger.warning(f"Rate limited (attempt {attempt + 1}). Waiting {wait:.1f}s")
                     await asyncio.sleep(wait)
                 elif status in (500, 502, 503, 504):

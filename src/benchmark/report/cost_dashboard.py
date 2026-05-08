@@ -25,7 +25,7 @@ PRICING: dict[str, dict[str, float]] = {
         "reasoning": 2.19,
         "output": 2.19,
     },
-    "gemini-2.0-flash-thinking-exp-01-21": {
+    "gemini-2.5-flash": {
         "input": 0.35,
         "reasoning": 3.50,
         "output": 1.05,

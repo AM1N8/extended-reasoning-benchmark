@@ -11,6 +11,7 @@ from rich.table import Table
 
 from benchmark.clients.__init__ import RateLimitedDispatcher
 from benchmark.clients.base import BudgetLevel, QueryRequest
+from benchmark.config import get_settings
 from benchmark.database import DatabaseManager
 
 logger = logging.getLogger(__name__)
@@ -74,12 +75,14 @@ async def _analyze_trace(row: dict, dispatcher: RateLimitedDispatcher) -> dict |
         budget_level=row.get("budget_level", 1),
         raw_trace=trace,
     )
+    prompt = f"{QUAL_JUDGE_SYSTEM_PROMPT}\n\n{prompt}"
 
     request = QueryRequest(
         prompt=prompt,
-        model="gemini-2.0-flash-thinking-exp-01-21",
+        model=get_settings().grader_model,
         budget_level=BudgetLevel.BASELINE,
         temperature=0.0,
+        max_tokens=256,
     )
 
     for attempt in range(2):
@@ -100,8 +103,8 @@ async def _analyze_trace(row: dict, dispatcher: RateLimitedDispatcher) -> dict |
                 if key not in data:
                     data[key] = 0
             return data
-        except (json.JSONDecodeError, AttributeError):
-            logger.warning(f"Failed to parse qual judge JSON (attempt {attempt + 1})")
+        except (json.JSONDecodeError, AttributeError) as e:
+            logger.warning(f"Failed to parse qual judge JSON (attempt {attempt + 1}). Content: {content}")
             continue
 
     return None

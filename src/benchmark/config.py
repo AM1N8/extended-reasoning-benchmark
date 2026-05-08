@@ -23,8 +23,11 @@ class Settings(BaseSettings):
     github_pat: str = ""
     github_models_endpoint: str = "https://models.inference.ai.azure.com"
 
-    # ── Google AI Studio (Gemini 2.0 Flash Thinking) ─────────────────
+    # ── Google AI Studio (Gemini 2.5 Flash) ──────────────────────────
     google_ai_studio_key: str = ""
+
+    # ── Groq API ─────────────────────────────────────────────────────
+    groq_api_key: str = ""
 
     # ── Benchmark Settings ───────────────────────────────────────────
     db_path: Path = Path("db/benchmark.db")
@@ -32,6 +35,7 @@ class Settings(BaseSettings):
     results_dir: Path = Path("results")
     dry_run_questions: int = 2
     log_level: str = "INFO"
+    grader_model: str = "groq/llama-3.3-70b-versatile"  # Default grader, can be overriden via .env
 
     # ── Derived paths ────────────────────────────────────────────────
     @property
