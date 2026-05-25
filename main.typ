@@ -43,7 +43,7 @@
 // TYPOGRAPHY
 // ============================================================
 #set text(
-  font: ("Libertinus Serif", "Georgia", "serif"),
+  font: "Libertinus Serif",
   size: 10.5pt,
   fill: ink,
   lang: "fr"
@@ -77,7 +77,7 @@
     fill: code-bg,
     radius: 2pt,
     inset: (x: 3pt, y: 1pt),
-    text(font: ("DejaVu Sans Mono", "Courier New", "monospace"),
+    text(font: "DejaVu Sans Mono",
          size: 8.5pt, fill: accent, it)
   )
 }
@@ -88,7 +88,7 @@
     stroke: (left: 3pt + accent),
     radius: 4pt,
     inset: (x: 14pt, y: 10pt),
-    text(font: ("DejaVu Sans Mono", "Courier New", "monospace"),
+    text(font: "DejaVu Sans Mono",
          size: 8pt, fill: ink, it)
   )
 }
@@ -165,7 +165,7 @@
   ]
 )
 
-#let fig-placeholder(label: "", height: 6cm) = block(
+#let fig-placeholder(height: 6cm) = block(
   width: 100%,
   height: height,
   fill: subtle,
@@ -173,13 +173,15 @@
   radius: 4pt,
   inset: 14pt,
   align(center + horizon,
-    stack(
-      spacing: 0.6em,
-      text(size: 9pt, weight: "bold", fill: accent, "[ ILLUSTRATION ]"),
-      text(size: 8.5pt, fill: muted, style: "italic", label)
-    )
+    text(size: 9pt, weight: "bold", fill: accent, "[ ILLUSTRATION MANQUANTE ]")
   )
 )
+
+// Style global pour les figures
+#show figure.caption: it => [
+  #v(0.5em)
+  #text(size: 8.5pt, fill: muted, style: "italic", it.body)
+]
 
 // Helper: build grid cells from array
 #let make-header-cell(h) = block(
@@ -670,9 +672,9 @@ permettant une analyse post-hoc des patterns de défaillance. La principale caus
 dépassement des limites de tokens par minute (TPM), particulièrement lors des runs à budget L4–L5
 où un seul échange peut consommer 10 000+ tokens de raisonnement.
 
-#fig-placeholder(
-  label: "Figure 1 — Distribution des échecs par provider et niveau de budget (L1–L5).\nLes endpoints Groq présentent une volatilité de rate-limiting significativement supérieure\naux endpoints GitHub Models sur les créneaux de haute charge.",
-  height: 5cm
+#figure(
+  fig-placeholder(height: 5cm),
+  caption: [Distribution des échecs par provider et niveau de budget. Les endpoints Groq présentent une volatilité de rate-limiting significativement supérieure aux autres sur les créneaux de haute charge.]
 )
 
 La stratégie de mitigation implémentée combine trois mécanismes complémentaires :
@@ -750,9 +752,9 @@ d'identifier où les modèles coûteux s'amortissent via la réduction des erreu
 Le résultat quantitatif central de ce benchmark est la démonstration empirique d'une courbe
 d'échelle non-linéaire à l'inférence, présentant une structure caractéristique en trois régimes.
 
-#fig-placeholder(
-  label: "Figure 2 — Précision moyenne par niveau de budget (L1–L5) pour chaque modèle.\nAxe X : niveau de budget. Axe Y : précision moyenne agrégée sur tous les datasets.\nNotez le plateau net après L3 pour les modèles à raisonnement natif,\net l'absence de gain pour les baselines au-delà de L1.",
-  height: 7cm
+#figure(
+  image("results/figures/fig3_accuracy_by_budget.png", width: 95%),
+  caption: [Précision moyenne par niveau de budget (L1–L5) pour chaque modèle. L'inflexion au niveau L3 est clairement visible.]
 )
 
 *Régime 1 — Gains Substantiels (L1 → L3).* Le passage du niveau L1 au niveau L3 (~3 000–5 000
@@ -764,16 +766,21 @@ les modèles à raisonnement natif.
 seuil de *2 %* pour 8 des 12 catégories analytiques testées. Ce plateau constitue la découverte
 empirique la plus robuste du benchmark — le phénomène de *structural asymptote*.
 
-*Régime 3 — Rendements Décroissants voire Négatifs (L4 → L5).* Pour certaines catégories
-(notamment `cause_effect` et `alfworld_plans`), le budget L5 montre une légère *dégradation*
-de la précision par rapport à L4, cohérente avec l'hypothèse de sur-analyse et de convergence
-vers de fausses trajectoires lors d'explorations excessivement larges.
+*Régime 3 — Rendements Décroissants voire Négatifs (L4 → L5).* Pour certaines catégories,
+le budget L5 montre une légère *dégradation* de la précision par rapport à L4, cohérente
+avec l'hypothèse de sur-analyse et de convergence vers de fausses trajectoires lors
+d'explorations excessivement larges.
+
+#figure(
+  image("results/figures/fig6_marginal_gains.png", width: 95%),
+  caption: [Gains marginaux en précision lors du passage au niveau de budget supérieur. Le franchissement sous la ligne rouge au-delà de L3 indique le point de diminution des rendements.]
+)
 
 == 4.2 Tendances de Consommation de Tokens : Dynamiques de Croissance
 
-#fig-placeholder(
-  label: "Figure 3 — Consommation moyenne de tokens de raisonnement (T_reason) par niveau de budget.\nÉchelle logarithmique. Notez la croissance super-linéaire de DeepSeek-R1 sur L4→L5\nvs. la croissance plus contrôlée de o3-mini sur les mêmes niveaux.\nLes baselines (GPT-4o, Claude 3.5) maintiennent T_reason ≈ 0 à tous les niveaux.",
-  height: 6.5cm
+#figure(
+  image("results/figures/fig1_diminishing_returns.png", width: 95%),
+  caption: [Corrélation entre précision et consommation de tokens de raisonnement. L'axe des ordonnées démontre la relation d'échelle non-linéaire.]
 )
 
 La croissance de $T_"reason"$ n'est pas linéaire avec le niveau de budget. Pour les modèles à
@@ -787,9 +794,9 @@ rend leur $E_"score"$ difficile à calculer via la formule standard.
 
 == 4.3 Le Coût de la Pensée : Overhead de Latence et Volatilité
 
-#fig-placeholder(
-  label: "Figure 4 — Distribution de la latence (ms) par niveau de budget pour chaque modèle.\nViolin plots : médiane, quartiles et distribution complète.\nL'augmentation de la variance à L4/L5 est particulièrement marquée pour o1.",
-  height: 6.5cm
+#figure(
+  image("results/figures/fig5_cost_vs_accuracy.png", width: 95%),
+  caption: [Frontière de Pareto : Coût estimé (API) vs Précision. La taille des points est proportionnelle à la latence.]
 )
 
 La latence totale présente une corrélation forte avec $T_"reason"$, mais avec une volatilité qui
@@ -891,9 +898,9 @@ particulièrement bien adaptée au style d'exploration de l'espace d'états que 
   directe. Le sweet spot L3 capture 90 %+ des gains maximaux atteignables.
 ]
 
-#fig-placeholder(
-  label: "Figure 5 — Courbes de précision par niveau de budget pour math_500 et logic_grid.\nComparaison DeepSeek-R1 vs. o1 vs. GPT-4o (baseline).\nLe plateau L3 est particulièrement net pour math_500 ; L4 apporte < 1,5 % de gain additionnel.",
-  height: 6cm
+#figure(
+  image("results/figures/fig2_efficiency_heatmap.png", width: 100%),
+  caption: [Heatmap de l'efficacité de raisonnement ($E_"score"$) par modèle et niveau de budget. Les nuances foncées (o3-mini, DeepSeek-R1) soulignent les configurations optimales.]
 )
 
 == 5.2 Domaines Syntaxiques et Algorithmiques : Code et Débogage
@@ -933,9 +940,9 @@ mais incorrects — un phénomène qualifié d'*hallucination dans le monologue*
 
 == 5.4 Carte de Chaleur Cross-Domaine
 
-#fig-placeholder(
-  label: "Figure 6 — Heatmap du gain de précision (ΔAcc = L3 - L1) par modèle et par dataset.\nBleu foncé : gain élevé (+20 %+). Blanc : gain nul. Rouge : dégradation.\nLes trois clusters (A : gains forts, B : gains modérés, C : ROI nul/négatif) sont clairement visibles.",
-  height: 7cm
+#figure(
+  image("results/figures/fig4_strategy_matrix.png", width: 95%),
+  caption: [Matrice d'efficacité des différentes stratégies cognitives (backtracking, décomposition, etc.) par tâche analytique.]
 )
 
 L'analyse cross-domaine révèle trois clusters comportementaux distincts :
@@ -1011,9 +1018,9 @@ L'analyse des traces de DeepSeek-R1 et o3-mini révèle des patterns structurés
 qui expliquent leur supériorité relative sur les tâches mathématiques. Le cycle typique se déroule
 en quatre phases :
 
-#fig-placeholder(
-  label: "Figure 7 — Diagramme du cycle de self-correction observé dans les traces à L3/L4.\nÉtapes : (1) Génération d'hypothèse → (2) Vérification → (3) Détection de contradiction\n→ (4) Backtracking → (5) Révision → (6) Confirmation finale.",
-  height: 5.5cm
+#figure(
+  fig-placeholder(height: 5.5cm),
+  caption: [Diagramme du cycle de self-correction observé dans les traces à L3/L4. (1) Génération d'hypothèse → (2) Vérification → (3) Détection de contradiction → (4) Backtracking → (5) Révision → (6) Confirmation.]
 )
 
 Ce cycle est observé dans 34 % des réponses correctes de DeepSeek-R1 à L3 sur `math_500`,
@@ -1087,9 +1094,9 @@ La conclusion opérationnelle centrale est qu'il n'existe pas de niveau de budge
 optimal. La stratégie de déploiement optimale est un *routeur dynamique* qui prédit la difficulté
 d'une requête et alloue le budget correspondant, maximisant le CPRC à l'échelle d'un fleet.
 
-#fig-placeholder(
-  label: "Figure 8 — Architecture du routeur dynamique de budget.\nFlux : Requête entrante → Classifieur de difficulté (modèle léger) → Sélection du budget L1–L5\n→ Modèle principal → Réponse. Le classifieur peut être BERT-small fine-tuné sur les métadonnées.",
-  height: 6cm
+#figure(
+  fig-placeholder(height: 6cm),
+  caption: [Architecture du routeur dynamique de budget. Flux : Requête entrante → Classifieur de difficulté → Sélection du budget (L1–L5) → Modèle principal.]
 )
 
 Le classifieur de difficulté peut utiliser les features suivantes, accessibles *sans* exécuter
@@ -1298,8 +1305,8 @@ just plot          → visualizations.py: 6+ figures PNG dans results/figures/
 just report        → cost_dashboard.py: rapport enterprise_guide.md
 ```
 
-#fig-placeholder(
-  label: "Figure A.1 — Trace DeepSeek-R1 annotée sur un problème math_500 de difficulté 5.\nAnnotations : [DECOMP] décomposition initiale, [VERIF] vérification intermédiaire,\n[BACK] backtracking détecté, [CORR] correction, [FINAL] convergence vers la réponse.\nTrace complète : ~2 800 tokens de raisonnement. Précision finale : correcte.",
-  height: 8cm
+#figure(
+  fig-placeholder(height: 8cm),
+  caption: [Trace annotée sur un problème de difficulté maximale. Annotations : [DECOMP], [VERIF], [BACK], [CORR], [FINAL].]
 )
 
