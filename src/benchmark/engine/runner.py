@@ -30,27 +30,27 @@ logger = logging.getLogger(__name__)
 ALL_MODELS = [
     #"groq/llama-3.3-70b-versatile",
     #"groq/deepseek-r1-distill-qwen-32b",
-    "openai/o1",
+    #"openai/o1",
     "openai/o3-mini",
-    "deepseek/DeepSeek-R1",
-    "gemini-2.5-flash",
-    "openai/gpt-4o",  # Baseline 1
+    # "deepseek/DeepSeek-R1",
+    # "gemini-2.5-flash",
+    # "openai/gpt-4o",  # Baseline 1
     # "anthropic/claude-3-5-sonnet",  # Baseline 2
 ]
 
 ALL_DATASETS = [
-    "math_500",
-    "gsm8k",
-    "humaneval",
-    "mbpp",
+    #"math_500",
+    #"gsm8k",
+    #"humaneval",
+    #"mbpp",
     "logic_grid",
-    "cause_effect",
-    "alfworld_plans",
-    "arc_challenge",
-    "hellaswag",
-    "drop",
-    "bbh_word_sorting",
-    "bbh_analogies",
+    #"cause_effect",
+    #"alfworld_plans",
+    #"arc_challenge",
+    #"hellaswag",
+    #"drop",
+    #"bbh_word_sorting",
+    #"bbh_analogies",
 ]
 
 ALL_BUDGET_LEVELS = [1, 2, 3, 4, 5]

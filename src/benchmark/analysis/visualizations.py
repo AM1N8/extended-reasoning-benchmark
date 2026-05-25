@@ -257,11 +257,15 @@ def plot_strategy_matrix(
         plt.close(fig)
         return output_path
 
+    import pandas as pd
     pdf = strategy_df.to_pandas().set_index("task_category")
+    pdf = pdf.apply(pd.to_numeric, errors="coerce")
 
     fig, ax = plt.subplots(figsize=(10, 7))
     # Check if baseline_accuracy exists
     center_val = pdf["baseline_accuracy"].mean() if "baseline_accuracy" in pdf else 0.5
+    if pd.isna(center_val):
+        center_val = 0.5
 
     sns.heatmap(pdf, annot=True, fmt=".2f", cmap="RdYlGn", center=center_val, ax=ax)
 
