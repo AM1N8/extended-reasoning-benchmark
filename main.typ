@@ -222,7 +222,7 @@
 
 // Metadata grid on cover
 #let cover-rows = (
-  ("AUTEUR",     "Benchmark Research Team"),
+  ("AUTEURS",    "Mohamed Amine Darraj, Adam Khald et Mourad Boutrid"),
   ("FRAMEWORK",  "llm-reasoning-benchmark · Python 3.12+ · uv + just"),
   ("DATASET",    "7 catégories · math_500, gsm8k, logic_grid, humaneval, mbpp, cause_effect, alfworld_plans"),
   ("MODÈLES",    "9 LLMs évalués · 5 niveaux de budget · 335 runs · 292 notés"),
