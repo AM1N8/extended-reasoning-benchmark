@@ -673,7 +673,7 @@ dépassement des limites de tokens par minute (TPM), particulièrement lors des 
 où un seul échange peut consommer 10 000+ tokens de raisonnement.
 
 #figure(
-  fig-placeholder(height: 5cm),
+  image("imgs/figure1.png", width: 95%),
   caption: [Distribution des échecs par provider et niveau de budget. Les endpoints Groq présentent une volatilité de rate-limiting significativement supérieure aux autres sur les créneaux de haute charge.]
 )
 
@@ -753,7 +753,7 @@ Le résultat quantitatif central de ce benchmark est la démonstration empirique
 d'échelle non-linéaire à l'inférence, présentant une structure caractéristique en trois régimes.
 
 #figure(
-  image("results/figures/fig3_accuracy_by_budget.png", width: 95%),
+  image("imgs/figure2.png", width: 95%),
   caption: [Précision moyenne par niveau de budget (L1–L5) pour chaque modèle. L'inflexion au niveau L3 est clairement visible.]
 )
 
@@ -772,7 +772,7 @@ avec l'hypothèse de sur-analyse et de convergence vers de fausses trajectoires 
 d'explorations excessivement larges.
 
 #figure(
-  image("results/figures/fig6_marginal_gains.png", width: 95%),
+  image("imgs/figure7.png", width: 95%),
   caption: [Gains marginaux en précision lors du passage au niveau de budget supérieur. Le franchissement sous la ligne rouge au-delà de L3 indique le point de diminution des rendements.]
 )
 
@@ -899,7 +899,7 @@ particulièrement bien adaptée au style d'exploration de l'espace d'états que 
 ]
 
 #figure(
-  image("results/figures/fig2_efficiency_heatmap.png", width: 100%),
+  image("imgs/figure5.png", width: 100%),
   caption: [Heatmap de l'efficacité de raisonnement ($E_"score"$) par modèle et niveau de budget. Les nuances foncées (o3-mini, DeepSeek-R1) soulignent les configurations optimales.]
 )
 
@@ -941,7 +941,7 @@ mais incorrects — un phénomène qualifié d'*hallucination dans le monologue*
 == 5.4 Carte de Chaleur Cross-Domaine
 
 #figure(
-  image("results/figures/fig4_strategy_matrix.png", width: 95%),
+  image("imgs/figure6.png", width: 95%),
   caption: [Matrice d'efficacité des différentes stratégies cognitives (backtracking, décomposition, etc.) par tâche analytique.]
 )
 
@@ -1019,7 +1019,7 @@ qui expliquent leur supériorité relative sur les tâches mathématiques. Le cy
 en quatre phases :
 
 #figure(
-  fig-placeholder(height: 5.5cm),
+  image("imgs/figure8.png", width: 95%),
   caption: [Diagramme du cycle de self-correction observé dans les traces à L3/L4. (1) Génération d'hypothèse → (2) Vérification → (3) Détection de contradiction → (4) Backtracking → (5) Révision → (6) Confirmation.]
 )
 
@@ -1095,7 +1095,7 @@ optimal. La stratégie de déploiement optimale est un *routeur dynamique* qui p
 d'une requête et alloue le budget correspondant, maximisant le CPRC à l'échelle d'un fleet.
 
 #figure(
-  fig-placeholder(height: 6cm),
+  image("imgs/figure9.png", width: 95%),
   caption: [Architecture du routeur dynamique de budget. Flux : Requête entrante → Classifieur de difficulté → Sélection du budget (L1–L5) → Modèle principal.]
 )
 
