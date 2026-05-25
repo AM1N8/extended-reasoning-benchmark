@@ -381,6 +381,7 @@ Ce benchmark s'articule autour de trois questions de recherche centrales :
 ]
 #v(0.8em)
 
+#pagebreak()
 // ============================================================
 // 2 — MÉTHODOLOGIE
 // ============================================================
@@ -578,6 +579,7 @@ juste entre modèles qui génèrent des volumes très différents selon le budge
   latency-sensitive. Cette limitation est discutée en Section 7.
 ]
 
+#pagebreak()
 // ============================================================
 // 3 — PIPELINE DE DONNÉES ET TÉLÉMÉTRIE
 // ============================================================
@@ -742,6 +744,7 @@ Un modèle à \$0,05 par requête avec 50 % de précision produit un CPRC de \$0
 à un modèle à \$0,10 avec 100 % de précision. Cette métrique permet aux architectes enterprise
 d'identifier où les modèles coûteux s'amortissent via la réduction des erreurs en aval.
 
+#pagebreak()
 // ============================================================
 // 4 — ANALYSE QUANTITATIVE
 // ============================================================
@@ -868,6 +871,7 @@ applications en production où des garanties de latence (SLAs) sont nécessaires
   stat-card(value: "13 %", label: "Taux d'échec API\n(Rate limit)"),
 )
 
+#pagebreak()
 // ============================================================
 // 5 — DISSECTION PAR DOMAINE
 // ============================================================
@@ -914,7 +918,7 @@ o3-mini à L4 sur `humaneval` (42,1 pts) constitue le deuxième meilleur score d
 Ce résultat est cohérent avec la spécialisation de la famille o3 sur les tâches de code,
 probablement via un curriculum d'entraînement RL ciblé sur les problèmes algorithmiques.
 
-Pour `mbpp` (débogage), le pattern est différent : les gains au-delà de L3 sont quasi-nuls,
+For `mbpp` (débogage), le pattern est différent : les gains au-delà de L3 sont quasi-nuls,
 voire négatifs. Ceci s'explique par la nature du débogage : une fois le bug identifié (ce qui
 se produit généralement en L2–L3), allouer davantage de tokens n'améliore pas la correction —
 elle peut même induire des sur-corrections qui cassent d'autres comportements corrects.
@@ -956,6 +960,7 @@ dépendants du modèle. Justifie L3 pour les modèles spécialisés.
 *Cluster C — ROI Nul ou Négatif :* `cause_effect`, `alfworld_plans` — gains < 3 % avec des
 cas de dégradation observable à L4+. Déploiement L1 recommandé.
 
+#pagebreak()
 // ============================================================
 // 6 — ANALYSE QUALITATIVE
 // ============================================================
@@ -1083,6 +1088,8 @@ scénario donné.
 raisonnement étendu est contra-productif. Un système de routage dynamique doit détecter ce
 type de tâche et court-circuiter à L1.
 #v(2cm)
+
+#pagebreak()
 // ============================================================
 // 7 — RECOMMANDATIONS
 // ============================================================
@@ -1159,6 +1166,7 @@ résilience pour les systèmes de raisonnement en production :
   inférieur ou une reformulation du prompt pour sortir de la boucle de sur-analyse.
 ]
 
+#pagebreak()
 // ============================================================
 // 8 — CONCLUSIONS
 // ============================================================
@@ -1227,6 +1235,7 @@ optimaux, maximisant le CPRC à l'échelle d'un fleet de production hétérogèn
 d'entraîner des modèles open-weights locaux à reproduire des patterns de raisonnement spécifiques
 sans dépendance aux APIs cloud, ouvrant la voie à des déploiements on-premise privacy-preserving.
 
+#pagebreak()
 // ============================================================
 // ANNEXE
 // ============================================================
@@ -1305,8 +1314,4 @@ just plot          → visualizations.py: 6+ figures PNG dans results/figures/
 just report        → cost_dashboard.py: rapport enterprise_guide.md
 ```
 
-#figure(
-  fig-placeholder(height: 8cm),
-  caption: [Trace annotée sur un problème de difficulté maximale. Annotations : [DECOMP], [VERIF], [BACK], [CORR], [FINAL].]
-)
 
