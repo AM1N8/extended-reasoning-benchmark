@@ -16,11 +16,11 @@
 
 | Model | Budget | Accuracy | Cost/1k Qs | Cost/Correct |
 |-------|--------|----------|------------|--------------|
-| o3-mini | L2 | 100.0% | $1.74 | $0.0017 |
-| o3-mini | L3 | 100.0% | $2.38 | $0.0024 |
-| DeepSeek-R1 | L2 | 100.0% | $2.44 | $0.0024 |
-| DeepSeek-R1 | L1 | 100.0% | $3.28 | $0.0033 |
-| gpt-4o | L3 | 100.0% | $4.26 | $0.0043 |
+| o3-mini | L2 | 70.0% | $1.93 | $0.0028 |
+| o3-mini | L3 | 100.0% | $3.08 | $0.0031 |
+| DeepSeek-R1 | L1 | 100.0% | $4.43 | $0.0044 |
+| gpt-4o | L2 | 80.0% | $4.31 | $0.0054 |
+| DeepSeek-R1 | L2 | 100.0% | $5.53 | $0.0055 |
 
 
 # Enterprise Model Selection Decision Tree
@@ -71,10 +71,13 @@ reconsider task formulation or dataset quality instead.
 
 | Task Category | Recommended Model | Budget | Exp. Accuracy | Cost/1k Qs |
 |---------------|-------------------|--------|---------------|------------|
-| ['Mathematical Reasoning'] | o3-mini | L2 | 100.0% | $1.74 |
-| ['Code Debugging'] | llama-3.3-70b-versatile | L1 | 0.0% | $0.77 |
-| ['Code Generation'] | llama-3.3-70b-versatile | L1 | 0.0% | $0.77 |
-| ['Arithmetic Word Problems'] | o1 | L4 | 100.0% | $38.53 |
+| ['Mathematical Reasoning'] | o3-mini | L2 | 100.0% | $1.93 |
+| ['Arithmetic Word Problems'] | llama-3.3-70b-versatile | L1 | 100.0% | $2.20 |
+| ['Causal Reasoning'] | llama-3.3-70b-versatile | L4 | 20.0% | $2.85 |
+| ['Code Debugging'] | llama-3.3-70b-versatile | L1 | 0.0% | $2.20 |
+| ['Code Generation'] | llama-3.3-70b-versatile | L1 | 0.0% | $2.20 |
+| ['Logical Deduction'] | o3-mini | L2 | 40.0% | $1.93 |
+| ['Multi-step Planning'] | llama-3.3-70b-versatile | L1 | 0.0% | $2.20 |
 
 
 ## Implementation Checklist
