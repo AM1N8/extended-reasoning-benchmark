@@ -779,7 +779,7 @@ d'explorations excessivement larges.
 == 4.2 Tendances de Consommation de Tokens : Dynamiques de Croissance
 
 #figure(
-  image("results/figures/fig1_diminishing_returns.png", width: 95%),
+  image("imgs/figure3.png", width: 95%),
   caption: [Corrélation entre précision et consommation de tokens de raisonnement. L'axe des ordonnées démontre la relation d'échelle non-linéaire.]
 )
 
