@@ -1,14 +1,14 @@
 // ============================================================
 // PALETTE & DESIGN SYSTEM — rapport-design-skill
 // ============================================================
-#let ink        = rgb("#1A1D2E")
-#let slate      = rgb("#3D4A6B")
-#let accent     = rgb("#4F7EBD")
-#let muted      = rgb("#8A93A8")
-#let paper      = rgb("#F7F8FB")
-#let code-bg    = rgb("#ECEEF4")
-#let white-bg   = rgb("#FFFFFF")
-#let subtle     = rgb("#EEF3FA")
+#let ink = rgb("#1A1D2E")
+#let slate = rgb("#3D4A6B")
+#let accent = rgb("#4F7EBD")
+#let muted = rgb("#8A93A8")
+#let paper = rgb("#F7F8FB")
+#let code-bg = rgb("#ECEEF4")
+#let white-bg = rgb("#FFFFFF")
+#let subtle = rgb("#EEF3FA")
 #let border-col = rgb("#D8DEEA")
 #let cover-dark = rgb("#1A1D2E")
 
@@ -24,8 +24,7 @@
       set text(size: 8pt, fill: muted)
       grid(
         columns: (1fr, auto),
-        [Benchmark Raisonnement Étendu — LLMs],
-        [Page #counter(page).display()]
+        [Benchmark Raisonnement Étendu — LLMs], [Page #counter(page).display()],
       )
       line(length: 100%, stroke: 0.4pt + muted)
     }
@@ -36,7 +35,7 @@
       set text(size: 8pt, fill: muted)
       align(center)[Optimiser la Frontière de Calcul à l'Inférence — Mai 2026]
     }
-  }
+  },
 )
 
 // ============================================================
@@ -46,7 +45,7 @@
   font: "Libertinus Serif",
   size: 10.5pt,
   fill: ink,
-  lang: "fr"
+  lang: "fr",
 )
 #set par(justify: true, spacing: 0.9em)
 
@@ -77,8 +76,7 @@
     fill: code-bg,
     radius: 2pt,
     inset: (x: 3pt, y: 1pt),
-    text(font: "DejaVu Sans Mono",
-         size: 8.5pt, fill: accent, it)
+    text(font: "DejaVu Sans Mono", size: 8.5pt, fill: accent, it),
   )
 }
 #show raw.where(block: true): it => {
@@ -88,8 +86,7 @@
     stroke: (left: 3pt + accent),
     radius: 4pt,
     inset: (x: 14pt, y: 10pt),
-    text(font: "DejaVu Sans Mono",
-         size: 8pt, fill: ink, it)
+    text(font: "DejaVu Sans Mono", size: 8pt, fill: ink, it),
   )
 }
 
@@ -102,7 +99,7 @@
   stroke: (left: 3pt + accent),
   radius: 4pt,
   inset: (x: 14pt, y: 10pt),
-  text(size: 9pt, fill: slate, body)
+  text(size: 9pt, fill: slate, body),
 )
 
 #let abstract-block(body) = block(
@@ -115,7 +112,7 @@
     text(size: 8.5pt, weight: "bold", fill: accent, tracking: 2pt, upper[Résumé])
     v(0.5em)
     text(size: 10pt, fill: ink, style: "italic", body)
-  }
+  },
 )
 
 #let card(title: "", body) = block(
@@ -130,7 +127,7 @@
       v(0.4em)
     }
     text(size: 9pt, fill: ink, body)
-  }
+  },
 )
 
 #let stat-card(value: "", label: "") = block(
@@ -143,26 +140,23 @@
     text(size: 20pt, weight: "bold", fill: accent, value)
     v(0.2em)
     text(size: 8pt, fill: muted, tracking: 1pt, upper(label))
-  }
+  },
 )
 
 #let badge(n, title: "", body) = grid(
   columns: (28pt, 1fr),
   gutter: 10pt,
-  align(top,
-    box(
-      width: 24pt, height: 24pt,
-      fill: accent,
-      radius: 3pt,
-      inset: (x: 2pt, y: 2pt),
-      align(center + horizon,
-        text(size: 8.5pt, weight: "bold", fill: white, str(n))
-      )
-    )
-  ),
+  align(top, box(
+    width: 24pt,
+    height: 24pt,
+    fill: accent,
+    radius: 3pt,
+    inset: (x: 2pt, y: 2pt),
+    align(center + horizon, text(size: 8.5pt, weight: "bold", fill: white, str(n))),
+  )),
   align(top)[
     #text(weight: "bold", fill: slate, title) #sym.dash.em #text(fill: ink, body)
-  ]
+  ],
 )
 
 #let fig-placeholder(height: 6cm) = block(
@@ -172,9 +166,7 @@
   stroke: 1pt + border-col,
   radius: 4pt,
   inset: 14pt,
-  align(center + horizon,
-    text(size: 9pt, weight: "bold", fill: accent, "[ ILLUSTRATION MANQUANTE ]")
-  )
+  align(center + horizon, text(size: 9pt, weight: "bold", fill: accent, "[ ILLUSTRATION MANQUANTE ]")),
 )
 
 // Style global pour les figures
@@ -187,7 +179,7 @@
 #let make-header-cell(h) = block(
   fill: subtle,
   inset: (x: 8pt, y: 6pt),
-  text(size: 8.5pt, weight: "bold", fill: slate, h)
+  text(size: 8.5pt, weight: "bold", fill: slate, h),
 )
 
 // ============================================================
@@ -222,17 +214,20 @@
 
 // Metadata grid on cover
 #let cover-rows = (
-  ("AUTEURS",    "Mohamed Amine Darraj, Adam Khald et Mourad Boutrid"),
-  ("FRAMEWORK",  "llm-reasoning-benchmark · Python 3.12+ · uv + just"),
-  ("DATASET",    "7 catégories · math_500, gsm8k, logic_grid, humaneval, mbpp, cause_effect, alfworld_plans"),
-  ("MODÈLES",    "9 LLMs évalués · 5 niveaux de budget · 335 runs · 292 notés"),
-  ("VERSION",    "v1.0 · Export JSON du 25 mai 2026 · benchmark.db (930 Ko)"),
+  ("AUTEURS", "Mohamed Amine Darraj, Adam Khald et Mourad Boutrid"),
+  ("FRAMEWORK", "llm-reasoning-benchmark · Python 3.12+ · uv + just"),
+  ("DATASET", "7 catégories · math_500, gsm8k, logic_grid, humaneval, mbpp, cause_effect, alfworld_plans"),
+  ("MODÈLES", "9 LLMs évalués · 5 niveaux de budget · 335 runs · 292 notés"),
+  ("VERSION", "v1.0 · Export JSON du 25 mai 2026 · benchmark.db (930 Ko)"),
 )
 #let cover-cells = ()
 #for (lbl, val) in cover-rows {
-  cover-cells = cover-cells + (
-    text(size: 8.5pt, fill: rgb("#6B7FA8"), tracking: 2pt, upper(lbl)),
-    text(size: 8.5pt, fill: rgb("#C8D2E0"), val),
+  cover-cells = (
+    cover-cells
+      + (
+        text(size: 8.5pt, fill: rgb("#6B7FA8"), tracking: 2pt, upper(lbl)),
+        text(size: 8.5pt, fill: rgb("#C8D2E0"), val),
+      )
   )
 }
 #grid(columns: (auto, 1fr), gutter: (10pt, 7pt), ..cover-cells)
@@ -293,8 +288,7 @@
     grid(
       columns: (18pt, 1fr),
       gutter: 8pt,
-      text(size: 9pt, fill: accent, weight: "bold", num),
-      text(size: 9pt, fill: ink, title),
+      text(size: 9pt, fill: accent, weight: "bold", num), text(size: 9pt, fill: ink, title),
     )
     v(0.35em)
   }
@@ -409,7 +403,7 @@ les conclusions ne sont pas artefactuelles d'une seule implémentation ou d'un s
     Atteint une précision parfaite (100 %) sur le domaine math_500 dans notre corpus,
     et une moyenne globale de 70 % sur 30 runs notés. Le coût moyen en tokens de
     raisonnement évolue de 628 (L1) à 2 266 (L5).
-  ]
+  ],
 )
 
 #v(0.8em)
@@ -429,7 +423,7 @@ les conclusions ne sont pas artefactuelles d'une seule implémentation ou d'un s
     `gemini-2.5-flash` et `gemini-2.0-flash-thinking-exp-01-21` représentent l'approche hybride
     de Google. Le modèle thinking a réalisé 9 runs valides avec un taux de succès de 66,7 %,
     s'avérant très compétitif en termes de rapport précision/latence.
-  ]
+  ],
 )
 
 === 2.1.3 Baselines de Contrôle (Niveau L1)
@@ -437,6 +431,8 @@ les conclusions ne sont pas artefactuelles d'une seule implémentation ou d'un s
 `openai/gpt-4o` sert de groupe de contrôle rigide. Ce modèle exécute la génération sans
 scratchpad interne prolongé (2 runs validés à 100 % sur GSM8K et math_500), fournissant
 la ligne de base contre laquelle quantifier les gains du raisonnement étendu.
+
+#v(4cm)
 
 == 2.2 Cadre Taxonomique : Les 7 Catégories de Tâches
 
@@ -454,24 +450,32 @@ mobiliser des compétences fondamentalement différentes :
 )[
   #let task-headers = ("Dataset ID", "Catégorie", "Source", "Caractéristiques")
   #let tasks-data = (
-    ("math_500",       "Raisonnement Math.",  "MATH-500",               "15 runs. Succès global de 93 %. Modèles excellent ici."),
-    ("gsm8k",          "Arithmétique",        "GSM8K",                  "241 runs (majorité du dataset). Taux de succès 49,4 %."),
-    ("logic_grid",     "Logique",             "BBH Logic Grid",         "15 runs. Succès 66,7 %. Puzzles combinatoires."),
-    ("humaneval",      "Génération Code",     "HumanEval",              "7 runs. Succès 0 %. Sandbox d'évaluation défaillante."),
-    ("mbpp",           "Débogage Code",       "MBPP",                   "7 runs. Succès 0 %. Échecs de validation de format."),
-    ("cause_effect",   "Raisonnement Causal", "BIG-Bench Cause-Effect", "5 runs. Succès 100 %. Tâche très bien maîtrisée."),
-    ("alfworld_plans", "Planification",       "ALFWorld",               "2 runs. Succès 0 %.")
+    ("math_500", "Raisonnement Math.", "MATH-500", "15 runs. Succès global de 93 %. Modèles excellent ici."),
+    ("gsm8k", "Arithmétique", "GSM8K", "241 runs (majorité du dataset). Taux de succès 49,4 %."),
+    ("logic_grid", "Logique", "BBH Logic Grid", "15 runs. Succès 66,7 %. Puzzles combinatoires."),
+    ("humaneval", "Génération Code", "HumanEval", "7 runs. Succès 0 %. Sandbox d'évaluation défaillante."),
+    ("mbpp", "Débogage Code", "MBPP", "7 runs. Succès 0 %. Échecs de validation de format."),
+    (
+      "cause_effect",
+      "Raisonnement Causal",
+      "BIG-Bench Cause-Effect",
+      "5 runs. Succès 100 %. Tâche très bien maîtrisée.",
+    ),
+    ("alfworld_plans", "Planification", "ALFWorld", "2 runs. Succès 0 %."),
   )
   #let tcells = ()
   #for h in task-headers {
     tcells = tcells + (make-header-cell(h),)
   }
   #for (id, cat, src, desc) in tasks-data {
-    tcells = tcells + (
-      text(size: 8pt, fill: accent, raw(id)),
-      text(size: 8.5pt, fill: ink, weight: "bold", cat),
-      text(size: 8pt, fill: muted, src),
-      text(size: 8pt, fill: ink, desc),
+    tcells = (
+      tcells
+        + (
+          text(size: 8pt, fill: accent, raw(id)),
+          text(size: 8.5pt, fill: ink, weight: "bold", cat),
+          text(size: 8pt, fill: muted, src),
+          text(size: 8pt, fill: ink, desc),
+        )
     )
   }
   #grid(
@@ -509,6 +513,9 @@ La persistance est assurée par le `DatabaseManager` (SQLite via Polars) qui enr
 réponse API — traces de raisonnement brutes, réponses finales, latence et usages de tokens —
 dans la base de données centrale `benchmark.db`.
 
+
+
+#v(4cm)
 == 2.4 Définition Opérationnelle des 5 Niveaux de Budget L1–L5
 
 #v(0.5em)
@@ -522,22 +529,45 @@ dans la base de données centrale `benchmark.db`.
 )[
   #let lvl-headers = ("Niveau", "Nom", "Budget Tokens", "Description opérationnelle")
   #let lvl-data = (
-    ("L1", "Baseline", "Non guidé",       "Exécution sans directive. Groupe de contrôle pur. Génération directe sans scratchpad."),
-    ("L2", "Light",    "< 1 000",         "Court-circuitage autorisé. Raisonnement minimal structuré. Adapté aux extractions simples."),
-    ("L3", "Medium",   "3 000 – 5 000",   "Cible du sweet spot hypothétique. Zone optimale pour les tâches à 3–7 étapes déductives."),
-    ("L4", "High",     "~10 000+",        "Tests exhaustifs aux limites. Exploration complète des chemins de solution."),
-    ("L5", "Maximum",  "Illimité",        "Directive système stricte forçant l'exploration multi-chemin avec vérification itérative."),
+    (
+      "L1",
+      "Baseline",
+      "Non guidé",
+      "Exécution sans directive. Groupe de contrôle pur. Génération directe sans scratchpad.",
+    ),
+    (
+      "L2",
+      "Light",
+      "< 1 000",
+      "Court-circuitage autorisé. Raisonnement minimal structuré. Adapté aux extractions simples.",
+    ),
+    (
+      "L3",
+      "Medium",
+      "3 000 – 5 000",
+      "Cible du sweet spot hypothétique. Zone optimale pour les tâches à 3–7 étapes déductives.",
+    ),
+    ("L4", "High", "~10 000+", "Tests exhaustifs aux limites. Exploration complète des chemins de solution."),
+    (
+      "L5",
+      "Maximum",
+      "Illimité",
+      "Directive système stricte forçant l'exploration multi-chemin avec vérification itérative.",
+    ),
   )
   #let lcells = ()
   #for h in lvl-headers {
     lcells = lcells + (make-header-cell(h),)
   }
   #for (lvl, nom, tok, desc) in lvl-data {
-    lcells = lcells + (
-      text(size: 9pt, weight: "bold", fill: accent, lvl),
-      text(size: 9pt, fill: ink, nom),
-      text(size: 8.5pt, fill: muted, tok),
-      text(size: 8.5pt, fill: ink, desc),
+    lcells = (
+      lcells
+        + (
+          text(size: 9pt, weight: "bold", fill: accent, lvl),
+          text(size: 9pt, fill: ink, nom),
+          text(size: 8.5pt, fill: muted, tok),
+          text(size: 8.5pt, fill: ink, desc),
+        )
     )
   }
   #grid(
@@ -606,7 +636,7 @@ La pipeline de collecte de données repose sur une architecture ETL en trois pha
     Persistance de chaque `QueryResponse` dans SQLite via `DatabaseManager`. Schéma normalisé
     en trois tables. Requêtes via Polars retournant des `pl.DataFrame` haute performance pour
     la pipeline d'analyse et de visualisation.
-  ]
+  ],
 )
 
 #v(3cm)
@@ -676,7 +706,7 @@ où un seul échange peut consommer 10 000+ tokens de raisonnement.
 
 #figure(
   image("imgs/figure1.png", width: 95%),
-  caption: [Distribution des échecs par provider et niveau de budget. Les endpoints Groq présentent une volatilité de rate-limiting significativement supérieure aux autres sur les créneaux de haute charge.]
+  caption: [Distribution des échecs par provider et niveau de budget. Les endpoints Groq présentent une volatilité de rate-limiting significativement supérieure aux autres sur les créneaux de haute charge.],
 )
 
 La stratégie de mitigation implémentée combine trois mécanismes complémentaires :
@@ -711,7 +741,7 @@ La stratégie de mitigation implémentée combine trois mécanismes complémenta
     Latence d'inférence très faible (~100 ms par token). Rate limits stricts en tokens/minute.
     Particulièrement contraints pour les requêtes L4/L5 à haute consommation de tokens.
     Optimal pour les requêtes L1/L2 à haute fréquence avec traces courtes.
-  ]
+  ],
 )
 
 == 3.3 Définitions Mathématiques des Métriques de Télémétrie
@@ -757,7 +787,7 @@ d'échelle non-linéaire à l'inférence, présentant une structure caractérist
 
 #figure(
   image("imgs/figure2.png", width: 95%),
-  caption: [Précision moyenne par niveau de budget (L1–L5) pour chaque modèle. L'inflexion au niveau L3 est clairement visible.]
+  caption: [Précision moyenne par niveau de budget (L1–L5) pour chaque modèle. L'inflexion au niveau L3 est clairement visible.],
 )
 
 *Régime 1 — Gains Substantiels (L1 → L3).* Le passage du niveau L1 au niveau L3 (~3 000–5 000
@@ -776,14 +806,14 @@ d'explorations excessivement larges.
 
 #figure(
   image("imgs/figure7.png", width: 95%),
-  caption: [Gains marginaux en précision lors du passage au niveau de budget supérieur. Le franchissement sous la ligne rouge au-delà de L3 indique le point de diminution des rendements.]
+  caption: [Gains marginaux en précision lors du passage au niveau de budget supérieur. Le franchissement sous la ligne rouge au-delà de L3 indique le point de diminution des rendements.],
 )
 
 == 4.2 Tendances de Consommation de Tokens : Dynamiques de Croissance
 
 #figure(
   image("imgs/figure3.png", width: 95%),
-  caption: [Corrélation entre précision et consommation de tokens de raisonnement. L'axe des ordonnées démontre la relation d'échelle non-linéaire.]
+  caption: [Corrélation entre précision et consommation de tokens de raisonnement. L'axe des ordonnées démontre la relation d'échelle non-linéaire.],
 )
 
 La croissance de $T_"reason"$ n'est pas linéaire avec le niveau de budget. Pour les modèles à
@@ -799,7 +829,7 @@ rend leur $E_"score"$ difficile à calculer via la formule standard.
 
 #figure(
   image("results/figures/fig5_cost_vs_accuracy.png", width: 95%),
-  caption: [Frontière de Pareto : Coût estimé (API) vs Précision. La taille des points est proportionnelle à la latence.]
+  caption: [Frontière de Pareto : Coût estimé (API) vs Précision. La taille des points est proportionnelle à la latence.],
 )
 
 La latence totale présente une corrélation forte avec $T_"reason"$, mais avec une volatilité qui
@@ -813,6 +843,8 @@ applications en production où des garanties de latence (SLAs) sont nécessaires
   également le dernier niveau où la variance de latence reste gérable en production.
 ]
 
+
+#v(8cm)
 == 4.4 Benchmarks Comparatifs : Top Configurations par Efficacité
 
 #v(0.5em)
@@ -826,27 +858,65 @@ applications en production où des garanties de latence (SLAs) sont nécessaires
 )[
   #let res-headers = ("Rang", "Modèle", "Budget", "Dataset", "E_score", "Note analytique")
   #let res-data = (
-    ("1", "deepseek/DeepSeek-R1",         "L1-L5", "math_500",   "100 %", "Précision parfaite sur 15 runs. Cost L5 = 2 266 tokens."),
-    ("2", "openai/o3-mini",                "L1-L4", "math_500",   "100 %", "Précision parfaite sur 5 runs. Plus efficient que R1."),
-    ("3", "gemini-2.0-flash-thinking",     "L2",    "gsm8k",      "80 %", "Excellent compromis précision/latence sur l'arithmétique."),
-    ("4", "openai/gpt-4o",                 "L1",    "gsm8k",      "100 %", "Baseline pure. Zéro token de raisonnement, score parfait."),
-    ("5", "groq/deepseek-r1-distill-qwen", "L1-L4", "math_500",   "75 %", "Meilleur modèle distillé sur les tâches mathématiques."),
-    ("6", "groq/llama-3.3-70b-versatile",  "L3",    "gsm8k",      "49 %", "Workhorse du benchmark (159 runs), mais précision moyenne."),
-    ("7", "gemini-2.5-flash",              "L2",    "gsm8k",      "66 %", "Très rapide mais taux d'échec de 33 % sur GSM8K."),
-    ("8", "Modèles de code (Tous)",        "Tous",  "humaneval/mbpp", "0 %", "Échec systématique de la sandbox ou du formatage."),
+    (
+      "1",
+      "deepseek/DeepSeek-R1",
+      "L1-L5",
+      "math_500",
+      "100 %",
+      "Précision parfaite sur 15 runs. Cost L5 = 2 266 tokens.",
+    ),
+    ("2", "openai/o3-mini", "L1-L4", "math_500", "100 %", "Précision parfaite sur 5 runs. Plus efficient que R1."),
+    (
+      "3",
+      "gemini-2.0-flash-thinking",
+      "L2",
+      "gsm8k",
+      "80 %",
+      "Excellent compromis précision/latence sur l'arithmétique.",
+    ),
+    ("4", "openai/gpt-4o", "L1", "gsm8k", "100 %", "Baseline pure. Zéro token de raisonnement, score parfait."),
+    (
+      "5",
+      "groq/deepseek-r1-distill-qwen",
+      "L1-L4",
+      "math_500",
+      "75 %",
+      "Meilleur modèle distillé sur les tâches mathématiques.",
+    ),
+    (
+      "6",
+      "groq/llama-3.3-70b-versatile",
+      "L3",
+      "gsm8k",
+      "49 %",
+      "Workhorse du benchmark (159 runs), mais précision moyenne.",
+    ),
+    ("7", "gemini-2.5-flash", "L2", "gsm8k", "66 %", "Très rapide mais taux d'échec de 33 % sur GSM8K."),
+    (
+      "8",
+      "Modèles de code (Tous)",
+      "Tous",
+      "humaneval/mbpp",
+      "0 %",
+      "Échec systématique de la sandbox ou du formatage.",
+    ),
   )
   #let rcells = ()
   #for h in res-headers {
     rcells = rcells + (make-header-cell(h),)
   }
   #for (rank, model, budget, ds, score, note) in res-data {
-    rcells = rcells + (
-      text(size: 8.5pt, fill: muted, rank),
-      text(size: 8pt, fill: ink, raw(model)),
-      text(size: 8.5pt, weight: "bold", fill: accent, budget),
-      text(size: 8pt, fill: muted, ds),
-      text(size: 9pt, weight: "bold", fill: accent, score),
-      text(size: 8pt, fill: muted, note),
+    rcells = (
+      rcells
+        + (
+          text(size: 8.5pt, fill: muted, rank),
+          text(size: 8pt, fill: ink, raw(model)),
+          text(size: 8.5pt, weight: "bold", fill: accent, budget),
+          text(size: 8pt, fill: muted, ds),
+          text(size: 9pt, weight: "bold", fill: accent, score),
+          text(size: 8pt, fill: muted, note),
+        )
     )
   }
   #grid(
@@ -904,7 +974,7 @@ particulièrement bien adaptée au style d'exploration de l'espace d'états que 
 
 #figure(
   image("imgs/figure5.png", width: 100%),
-  caption: [Heatmap de l'efficacité de raisonnement ($E_"score"$) par modèle et niveau de budget. Les nuances foncées (o3-mini, DeepSeek-R1) soulignent les configurations optimales.]
+  caption: [Heatmap de l'efficacité de raisonnement ($E_"score"$) par modèle et niveau de budget. Les nuances foncées (o3-mini, DeepSeek-R1) soulignent les configurations optimales.],
 )
 
 == 5.2 Domaines Syntaxiques et Algorithmiques : Code et Débogage
@@ -946,7 +1016,7 @@ mais incorrects — un phénomène qualifié d'*hallucination dans le monologue*
 
 #figure(
   image("imgs/figure6.png", width: 95%),
-  caption: [Matrice d'efficacité des différentes stratégies cognitives (backtracking, décomposition, etc.) par tâche analytique.]
+  caption: [Matrice d'efficacité des différentes stratégies cognitives (backtracking, décomposition, etc.) par tâche analytique.],
 )
 
 L'analyse cross-domaine révèle trois clusters comportementaux distincts :
@@ -990,7 +1060,7 @@ textuels caractéristiques :
     Signal : _"This is similar to algorithm X / problem type Y."_
     Plus fréquente dans `humaneval`. Réduit les erreurs de structure algorithmique
     en ancrant le raisonnement sur des solutions connues.
-  ]
+  ],
 )
 #v(0.6em)
 #grid(
@@ -1007,7 +1077,7 @@ textuels caractéristiques :
     Signal : _"Wait, that implies X which is false, reverting..."_
     Stratégie critique sur `logic_grid`. Quasi-absente dans les baselines sans
     scratchpad. Observée dans 34 % des réponses correctes de DeepSeek-R1 à L3.
-  ]
+  ],
 )
 #v(0.6em)
 #card(title: "5 · Auto-Consistance")[
@@ -1025,7 +1095,7 @@ en quatre phases :
 
 #figure(
   image("imgs/figure8.png", width: 95%),
-  caption: [Diagramme du cycle de self-correction observé dans les traces à L3/L4. (1) Génération d'hypothèse → (2) Vérification → (3) Détection de contradiction → (4) Backtracking → (5) Révision → (6) Confirmation.]
+  caption: [Diagramme du cycle de self-correction observé dans les traces à L3/L4. (1) Génération d'hypothèse → (2) Vérification → (3) Détection de contradiction → (4) Backtracking → (5) Révision → (6) Confirmation.],
 )
 
 Ce cycle est observé dans 34 % des réponses correctes de DeepSeek-R1 à L3 sur `math_500`,
@@ -1103,7 +1173,7 @@ d'une requête et alloue le budget correspondant, maximisant le CPRC à l'échel
 
 #figure(
   image("imgs/figure9.png", width: 95%),
-  caption: [Architecture du routeur dynamique de budget. Flux : Requête entrante → Classifieur de difficulté → Sélection du budget (L1–L5) → Modèle principal.]
+  caption: [Architecture du routeur dynamique de budget. Flux : Requête entrante → Classifieur de difficulté → Sélection du budget (L1–L5) → Modèle principal.],
 )
 
 Le classifieur de difficulté peut utiliser les features suivantes, accessibles *sans* exécuter
@@ -1130,7 +1200,7 @@ la requête principale (coût zéro additionnel) :
     Décision médicale, analyse financière, génération de code production, recherche juridique.
     Le sweet spot L3 maximise la précision pour un surcoût 2–3× vs. L1. L4 n'est justifié
     que pour les tâches multi-step > 7 étapes, avec un budget de monitoring de divergence.
-  ]
+  ],
 )
 
 #v(0.8em)
@@ -1251,30 +1321,33 @@ sans dépendance aux APIs cloud, ouvrant la voie à des déploiements on-premise
   width: 100%,
 )[
   #let specs = (
-    ("Langage",               "Python 3.12+"),
-    ("Gestionnaire de paquets","uv + hatchling build"),
-    ("Base de données",       "SQLite via DatabaseManager · ~2 Go"),
-    ("Moteur de données",     "Polars + Pandas + PyArrow"),
-    ("Statistiques et viz.",  "SciPy + statsmodels + Matplotlib + Seaborn"),
-    ("Client HTTP",           "httpx (HTTP/2, async)"),
-    ("Configuration",         "pydantic-settings + python-dotenv"),
-    ("CLI UX",                "tqdm + rich"),
-    ("Qualité du code",       "Ruff + pytest (asyncio)"),
-    ("Automatisation",        "just (justfile)"),
-    ("Providers API",         "GitHub Models · Google AI Studio · Groq"),
-    ("Volume de données",     "~50 M tokens · 18k–36k requêtes · ~2 Go SQLite"),
+    ("Langage", "Python 3.12+"),
+    ("Gestionnaire de paquets", "uv + hatchling build"),
+    ("Base de données", "SQLite via DatabaseManager · ~2 Go"),
+    ("Moteur de données", "Polars + Pandas + PyArrow"),
+    ("Statistiques et viz.", "SciPy + statsmodels + Matplotlib + Seaborn"),
+    ("Client HTTP", "httpx (HTTP/2, async)"),
+    ("Configuration", "pydantic-settings + python-dotenv"),
+    ("CLI UX", "tqdm + rich"),
+    ("Qualité du code", "Ruff + pytest (asyncio)"),
+    ("Automatisation", "just (justfile)"),
+    ("Providers API", "GitHub Models · Google AI Studio · Groq"),
+    ("Volume de données", "~50 M tokens · 18k–36k requêtes · ~2 Go SQLite"),
   )
   #let scells = ()
   #for (k, v) in specs {
-    scells = scells + (
-      text(size: 8.5pt, weight: "bold", fill: slate, k),
-      text(size: 8.5pt, fill: ink, v),
+    scells = (
+      scells
+        + (
+          text(size: 8.5pt, weight: "bold", fill: slate, k),
+          text(size: 8.5pt, fill: ink, v),
+        )
     )
   }
   #grid(columns: (auto, 1fr), gutter: (12pt, 6pt), ..scells)
 ]
 
-#v(2cm)
+
 == A.2 Templates de Prompts par Niveau de Budget
 
 ```
@@ -1302,7 +1375,7 @@ cases, and backtrack if you find a contradiction. Do not stop reasoning
 until you are absolutely certain.
 {question}
 ```
-
+#v(2cm)
 == A.3 Structure du Pipeline d'Analyse Post-Run
 
 ```
