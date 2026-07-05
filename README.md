@@ -124,8 +124,8 @@ You will need:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/USERNAME/llm-reasoning-benchmark
-cd llm-reasoning-benchmark
+git clone https://github.com/AM1N8/extended-reasoning-benchmark
+cd extended-reasoning-benchmark
 
 # 2. Install dependencies
 uv sync
