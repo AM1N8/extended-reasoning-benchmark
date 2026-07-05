@@ -238,12 +238,12 @@ just test-cov
 
 ```bibtex
 @software{llm_reasoning_benchmark_2026,
-  author    = {Your Name},
+  author    = {Mohamed Amine Darraj},
   title     = {LLM Extended Reasoning Benchmark: Diminishing Returns in Test-Time Compute},
   year      = {2026},
   publisher = {GitHub},
   journal   = {GitHub repository},
-  url       = {https://github.com/USERNAME/llm-reasoning-benchmark}
+  url       = {https://github.com/AM1N8/llm-reasoning-benchmark}
 }
 ```
 
